@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.3/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.3/dist/sweetalert2.min.js"></script>
+
+    <title>HR Recruitment Assistant</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 20px;
+    }
+
+    h1 {
+        color: #007bff;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    select, input, textarea, button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+
+    p {
+        color: #28a745;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 20px;
+        animation: fadeInUp 1s ease-out; /* Add fade-in animation */
+    }
+
+    /* Add fade-in animation keyframes */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+      }
+    </style>
+</head>
+<body>
+    <h1>HR Recruitment Assistant</h1>
+    <form name="evaluateForm" action="/evaluate" method="post">
+        <label for="jobProfile">Select Job Profile:</label>
+        <select name="jobProfile" id="jobProfile">
+            <option value="software_engineer">Software Engineer</option>
+            <option value="data_scientist">Data Scientist</option>
+            <option value="marketing_specialist">Marketing Specialist</option>
+        </select>
+
+        <label for="skills">Enter Candidate Skills (comma-separated):</label>
+        <input type="text" name="skills" id="skills" required>
+
+        <label for="education">Education Level:</label>
+        <input type="text" name="education" id="education" required>
+
+        <label for="cgpa">CGPA:</label>
+        <input type="number" name="cgpa" id="cgpa" step="0.01" required>
+
+        <label for="comments">Additional Comments:</label>
+        <textarea name="comments" id="comments" rows="4"></textarea>
+
+        <button type="submit" onclick="evaluateResume()">Evaluate Resume</button>
+        {% if feedback %}
+        <p>{{ feedback }}</p>
+    {% endif %}
+    </form>
+  
+</body>
+</html>
